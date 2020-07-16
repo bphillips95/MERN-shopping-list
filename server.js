@@ -8,7 +8,7 @@ const app = express()
 app.use(bodyParser.json())
 
 // DB config
-const db = require('./config/.env').mongoURI
+const db = require('./.env').mongoURI
 
 // Connect to MongoDB
 mongoose.connect(db)
