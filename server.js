@@ -24,6 +24,7 @@ const uri = process.env.MONGO_URI;
 // });
 mongoose.connect(uri, {useNewUrlParser: true}, () => {
     console.log("CONNECTED")
+    console.log(db.getName())
 })
 
 app.get('/', (req, res) => {
