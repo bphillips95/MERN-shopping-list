@@ -9,29 +9,15 @@ const app = express()
 // BodyParser Middleware
 app.use(bodyParser.json())
 
-// DB config
-// const db = require('./config/keys').mongoURI
-// console.log(db)
 // Connect to MongoDB
-// const MongoClient = require('mongodb').MongoClient;
 const uri = process.env.MONGO_URI;
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   console.log("DB CONNECTED")
 
-// //   perform actions on the collection object
-//   client.close();
-// });
-// mongoose.connect(uri, { useNewUrlParser: true })
-// .catch(error => console.log(error));
-
-mongoose.connect(uri, {useNewUrlParser: true})
+mongoose.connect(uri, {useNewUrlParser: true,useUnifiedTopology: true})
     .then(() => console.log("MongoDB connected"))
     .catch(() => console.log("DIDN'T CONNECT"))
 
 // Use Routes
-app.use('api/items', items)
+app.use('/api/items', items)
 
 const port = process.env.PORT || 5000;
 
