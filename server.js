@@ -19,21 +19,16 @@ const uri = process.env.MONGO_URI;
 // client.connect(err => {
 //   const collection = client.db("test").collection("devices");
 //   console.log("DB CONNECTED")
-//   // perform actions on the collection object
+
+// //   perform actions on the collection object
 //   client.close();
 // });
-mongoose.connect(uri, {useNewUrlParser: true}, () => {
-    console.log("CONNECTED")
-    console.log(db.getName())
-})
+// mongoose.connect(uri, { useNewUrlParser: true })
+// .catch(error => console.log(error));
 
-app.get('/', (req, res) => {
-    res.send("HOME PAGE")
-})
-
-// mongoose.connect(db)
-//     .then(() => console.log("MongoDB connected"))
-//     .catch(() => console.log(err))
+mongoose.connect(uri, {useNewUrlParser: true})
+    .then(() => console.log("MongoDB connected"))
+    .catch(() => console.log("DIDN'T CONNECT"))
 
 // Use Routes
 app.use('api/items', items)

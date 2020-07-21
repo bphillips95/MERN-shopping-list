@@ -8,6 +8,7 @@ const Item = require('../../models/Item')
 //  @desc Get All Items 
 //  @access Public
 router.get('/', (req, resp) => {
+    resp.send("POSTS")
     Item.find()
     .sort({date: -1})
     .then(items => resp.json(items))
