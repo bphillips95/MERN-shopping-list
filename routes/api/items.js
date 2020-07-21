@@ -25,4 +25,10 @@ router.post('/', (req, resp) => {
     newItem.save().then(item => resp.json(item))
 })
 
+router.delete('/:id', (req, resp) => {
+   Item.findById(req.params.id)
+    .then(item => item.remove().then(resp.json({success: true})))
+    .catch(err => resp.staus(404).json({success: false}))
+})
+
 module.exports = router;
