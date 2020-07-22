@@ -3,11 +3,13 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('dotenv/config')
 const items = require('./routes/api/items')
-
+const cors = require('cors')
 const app = express()
 
 // BodyParser Middleware
 app.use(bodyParser.json())
+// Allowing client-side to connect
+app.use(cors())
 
 // Connect to MongoDB
 const uri = process.env.MONGO_URI;
